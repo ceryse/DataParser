@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Utils {
@@ -17,5 +18,10 @@ public class Utils {
         }
 
         return output.toString();
+    }
+
+    public static ArrayList<ElectionResult> parse2016ElectionResults(String data) {
+
+        return new ArrayList<>();
     }
 }
