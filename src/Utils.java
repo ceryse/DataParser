@@ -36,7 +36,8 @@ public class Utils {
             int indexOfQuote = row.indexOf("\"");
             int indexOf2ndQuote = row.indexOf("\"", indexOfQuote + 1);
             String a = row.substring(indexOfQuote, indexOf2ndQuote + 1);
-            String b = a.replace(",", " ");
+            String b = a.replace(",", "");
+            b = b.substring(1, b.length() - 1);
             row = row.replace(a, b);
         }
         return row;

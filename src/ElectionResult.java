@@ -4,7 +4,7 @@ public class ElectionResult {
     private int total_votes;
     private double per_dem;
     private double per_gop;
-    private String diff; //TODO: find out what diff is
+    private int diff;
     private double per_point_diff;
     private String state_abbr;
     private String county_name;
@@ -16,7 +16,7 @@ public class ElectionResult {
         this.total_votes = (int)Double.parseDouble(total_votes);
         this.per_dem = Double.parseDouble(per_dem);
         this.per_gop = Double.parseDouble(per_gop);
-        this.diff = diff;
+        this.diff = Integer.parseInt(diff);
         this.per_point_diff = Double.parseDouble(per_point_diff.substring(0,per_point_diff.length()-1));
         this.state_abbr = state_abbr;
         this.county_name = county_name;
@@ -79,11 +79,11 @@ public class ElectionResult {
         this.per_gop = per_gop;
     }
 
-    public String getDiff() {
+    public int getDiff() {
         return diff;
     }
 
-    public void setDiff(String diff) {
+    public void setDiff(int diff) {
         this.diff = diff;
     }
 
