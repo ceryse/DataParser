@@ -4,8 +4,9 @@ public class State {
     private String name;
     private List<County> counties;
 
-    public State() {
-
+    public State(String name, List<County> counties) {
+        this.name = name;
+        this.counties = counties;
     }
 
     public String getName() {
