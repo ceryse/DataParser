@@ -7,12 +7,13 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        //test of Utils
 
-        String data = Utils.readFileAsString("data/2016_Presidential_Results.csv");
+        String presidentialData = Utils.readFileAsString("data/2016_Presidential_Results.csv");
+        String educationData = Utils.readFileAsString("data/Education.csv");
+        String employmentData = Utils.readFileAsString("data/Unemployment.csv");
 
-        ArrayList<ElectionResult> results = Utils.parse2016ElectionResults(data);
+        ArrayList<Education2016> education = Utils.parse2016Education(educationData);
 
-        for (ElectionResult result : results)System.out.println(result);
+
     }
 }

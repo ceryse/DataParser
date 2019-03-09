@@ -1,3 +1,4 @@
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Utils {
     }
 
     private static String removeComma(String row) {
-        if (row.contains("\"")) {
+        while (row.contains("\"")) {
             int indexOfQuote = row.indexOf("\"");
             int indexOf2ndQuote = row.indexOf("\"", indexOfQuote + 1);
             String a = row.substring(indexOfQuote, indexOf2ndQuote + 1);
@@ -41,5 +42,27 @@ public class Utils {
             row = row.replace(a, b);
         }
         return row;
+    }
+
+    public static ArrayList<Education2016> parse2016Education(String data) {
+        ArrayList<Education2016> results = new ArrayList<>();
+        String[] rows = data.split("\n");
+        for (int i = 6; i < rows.length; i++) {
+            rows[i] = removeComma(rows[i]);
+            String[] list = rows[i].split(",");
+            results.add(new Education2016(Double.parseDouble(list[44]), Double.parseDouble(list[45]), Double.parseDouble(list[46]), Double.parseDouble(list[47])));
+        }
+        return results;
+    }
+
+    public static ArrayList<Employment2016> parse2016Employment(String data) {
+        ArrayList<Employment2016> results = new ArrayList<>();
+        String[] rows = data.split("\n");
+        for (int i = 9; i < rows.length; i++) {
+            rows[i] = removeComma(rows[i]);
+            String[] list = rows[i].split(",");
+            results.add(new Employment2016(Integer.parseInt(list[43]), Integer.parseInt(list[44]), Integer.parseInt(list[45]), Integer.parseInt(list[46])));
+        }
+        return results;
     }
 }
