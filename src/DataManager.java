@@ -18,8 +18,7 @@ public class DataManager {
     }
 
     private void loadEducationData(String[] lines, County c) {
-        for (int i = 0; i < lines.length - 1; i++) {
-            String line = lines[i];
+        for (String line : lines) {
             if (line == null) continue;
             String[] vals = line.split(",");
             if (vals.length < 43) continue;
@@ -28,8 +27,7 @@ public class DataManager {
     }
 
     private void loadEmploymentData(String[] lines, County c) {
-        for (int i = 0; i < lines.length - 1; i++) {
-            String line = lines[i];
+        for (String line : lines) {
             if (line == null) continue;
             String[] vals = line.split(",");
             if (vals.length < 42) continue;
@@ -66,8 +64,8 @@ public class DataManager {
     }
 
     private void addStateObjs(String[] lines) {
-        for (int i = 0; i < lines.length - 1; i++) {
-            String line = lines[i];
+        for (String line : lines) {
+            if (line == null) continue;
             String[] vals = line.split(",");
             State state = new State(vals[8].trim());
             if (!containsState(state)) {
