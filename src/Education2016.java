@@ -3,12 +3,14 @@ public class Education2016 {
     private double onlyHighSchool;
     private double someCollege;
     private double bachelorsOrMore;
+    private County county;
 
-    public Education2016(double noHighSchool, double onlyHighSchool, double someCollege, double bachelorsOrMore) {
+    public Education2016(double noHighSchool, double onlyHighSchool, double someCollege, double bachelorsOrMore, County county) {
         this.noHighSchool = noHighSchool;
         this.onlyHighSchool = onlyHighSchool;
         this.someCollege = someCollege;
         this.bachelorsOrMore = bachelorsOrMore;
+        this.county = county;
     }
 
     public double getNoHighSchool() {

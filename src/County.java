@@ -1,16 +1,23 @@
 public class County {
     private String name;
+    private State state;
     private int fips;
     private Election2016 vote2016;
     private Education2016 educ2016;
     private Employment2016 employ2016;
 
-    public County(String name, int fips, Election2016 vote2016, Education2016 educ2016, Employment2016 employ2016) {
+    public County(String name, int fips, State state) {
         this.name = name;
         this.fips = fips;
-        this.vote2016 = vote2016;
-        this.educ2016 = educ2016;
-        this.employ2016 = employ2016;
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public String getName() {

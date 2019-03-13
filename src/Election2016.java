@@ -2,11 +2,13 @@ public class Election2016 {
     private double demVotes;
     private double gopVotes;
     private double totalVotes;
+    private County county;
 
-    public Election2016(double demVotes, double gopVotes, double totalVotes) {
+    public Election2016(double demVotes, double gopVotes, double totalVotes, County county) {
         this.demVotes = demVotes;
         this.gopVotes = gopVotes;
         this.totalVotes = totalVotes;
+        this.county = county;
     }
 
     public double getDemVotes() {
