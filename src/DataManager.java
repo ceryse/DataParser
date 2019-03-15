@@ -22,7 +22,9 @@ public class DataManager {
             if (line == null) continue;
             String[] vals = line.split(",");
             if (vals.length < 43) continue;
-            c.setEduc2016(new Education2016(Double.parseDouble(vals[43].trim()), Double.parseDouble(vals[44].trim()), Double.parseDouble(vals[45].trim()), Double.parseDouble(vals[46].trim()), c));
+            if (vals[2].equals(c.getName())) {
+                c.setEduc2016(new Education2016(Double.parseDouble(vals[43].trim()), Double.parseDouble(vals[44].trim()), Double.parseDouble(vals[45].trim()), Double.parseDouble(vals[46].trim()), c));
+            }
         }
     }
 
@@ -31,7 +33,9 @@ public class DataManager {
             if (line == null) continue;
             String[] vals = line.split(",");
             if (vals.length < 42) continue;
-            c.setEmploy2016(new Employment2016(Integer.parseInt(vals[42].trim()), Integer.parseInt(vals[43].trim()), Integer.parseInt(vals[44].trim()), Double.parseDouble(vals[45].trim()), c));
+            if (vals[2].equals(c.getName())) {
+                c.setEmploy2016(new Employment2016(Integer.parseInt(vals[42].trim()), Integer.parseInt(vals[43].trim()), Integer.parseInt(vals[44].trim()), Double.parseDouble(vals[45].trim()), c));
+            }
         }
     }
 
