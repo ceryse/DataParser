@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
-
         String presidentialData = Utils.readFileAsString("data/2016_Presidential_Results.csv");
         String educationData = Utils.readFileAsString("data/Education.csv");
         String employmentData = Utils.readFileAsString("data/Unemployment.csv");
