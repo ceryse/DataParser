@@ -7,16 +7,15 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
-
-        String presidentialData = Utils.readFileAsString("Data/2016_Presidential_Results.csv");
-        String educationData = Utils.readFileAsString("Data/Education.csv");
-        String employmentData = Utils.readFileAsString("Data/Unemployment.csv");
-        String voterData = Utils.readFileAsString("Data/RegisteredVoters.csv");
-        String householdIncome = Utils.readFileAsString("Data/MedianHouseholdIncome.csv");
-
+        String voterData = Utils.readFileAsString("data/RegisteredVoters.csv");
+        String householdIncome = Utils.readFileAsString("data/MedianHouseholdIncome.csv");
 
         DataManager dataManager = new DataManager();
         dataManager.loadAllData(householdIncome, voterData);
+        System.out.println(dataManager.getMedianIncome());
+        System.out.println("State\t% Voted out of total Pop.\tMedian income\tHigh income?");
+        for (State state : dataManager.getStates()) {
+            System.out.println(state.getName() + "\t" + state.getData().getPercentVoted() + "\t" + state.getData().getMedianIncome() + "\t" + state.getData().isHighIncome());
+        }
     }
 }

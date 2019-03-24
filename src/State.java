@@ -4,6 +4,15 @@ public class State {
 
     public State(String name, Data data) {
         this.name = name;
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "State{" +
+                "name='" + name + '\'' +
+                ", data=" + data +
+                '}';
     }
 
     public String getName() {
