@@ -1,19 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class State {
     private String name;
-    private List<County> counties;
+    private Data data;
 
-    public State(String name) {
+    public State(String name, Data data) {
         this.name = name;
-        counties = new ArrayList<>();
-    }
-
-
-
-    public void add(County c) {
-        counties.add(c);
     }
 
     public String getName() {
@@ -24,11 +14,11 @@ public class State {
         this.name = name;
     }
 
-    public List<County> getCounties() {
-        return counties;
+    public Data getData() {
+        return data;
     }
 
-    public void setCounties(List<County> counties) {
-        this.counties = counties;
+    public void setData(Data data) {
+        this.data = data;
     }
 }

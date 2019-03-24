@@ -2,10 +2,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataManager {
-    private List<State> states;
+    private List<State1> state1s;
 
     public DataManager() {
-        this.states = new ArrayList<>();
+        this.state1s = new ArrayList<>();
+    }
+
+    public void loadAllData(String incomeFile, String votersFile) {
+        String[] incomeRawLines = Utils.getCleanLines(incomeFile, 2);
+        String[] voterRawLines = Utils.getCleanLines(votersFile, 11);
+
+        addStateObjs(incomeRawLines, voterRawLines);
+    }
+
+    private void addStateObjs(String[] incomeRawLines, String[] voterRawLines) {
+        for (int i = 0; i < incomeRawLines.length; i++) {
+            String voterLine = voterRawLines[i];
+            String incomeLine = incomeRawLines[i];
+            if (voterLine == null) System.out.println("voter line null");
+            if (incomeLine == null) System.out.println("income line null");
+            String[] incomeVals = incomeLine.split(",");
+            String[] voterVals = voterLine.split(",");
+            Data data = new Data(incomeVals[1], voterVals[9], incomeVals[11]);
+            State state = new State(data.getState(), data);
+        }
     }
 
     public void loadAllData(String electionFile, String educationFile, String employmentFile) {
@@ -45,24 +65,24 @@ public class DataManager {
             String[] vals = line.split(",");
             String stateName = vals[8];
 
-            State state = getState(stateName);
-            if (state == null) {
-                System.out.println("ERROR: state is null");
+            State1 state1 = getState(stateName);
+            if (state1 == null) {
+                System.out.println("ERROR: state1 is null");
             } else {
                 String countyName = vals[9];
                 int fips = Integer.parseInt(vals[10]);
-                County c = new County(countyName, fips, state);
+                County c = new County(countyName, fips, state1);
                 c.setVote2016(new Election2016(Double.parseDouble(vals[1].trim()), Double.parseDouble(vals[2].trim()), Double.parseDouble(vals[3].trim()), c));
                 loadEducationData(educationLines, c);
                 loadEmploymentData(employmentLines, c);
-                state.add(c);
+                state1.add(c);
             }
         }
     }
 
-    private State getState(String stateName) {
-        for (State state : states) {
-            if (state.getName().equals(stateName)) return state;
+    private State1 getState(String stateName) {
+        for (State1 state1 : state1s) {
+            if (state1.getName().equals(stateName)) return state1;
         }
         return null;
     }
@@ -71,29 +91,29 @@ public class DataManager {
         for (String line : lines) {
             if (line == null) continue;
             String[] vals = line.split(",");
-            State state = new State(vals[8].trim());
-            if (!containsState(state)) {
-                states.add(state);
+            State1 state1 = new State1(vals[8].trim());
+            if (!containsState(state1)) {
+                state1s.add(state1);
             }
         }
     }
 
-    private boolean containsState(State state) {
-        for (State s : states) {
-            if (s.getName().equals(state.getName())) return true;
+    private boolean containsState(State1 state1) {
+        for (State1 s : state1s) {
+            if (s.getName().equals(state1.getName())) return true;
         }
         return false;
     }
 
-    public void add(State state) {
-        states.add(state);
+    public void add(State1 state1) {
+        state1s.add(state1);
     }
 
-    public List<State> getStates() {
-        return states;
+    public List<State1> getState1s() {
+        return state1s;
     }
 
-    public void setStates(List<State> states) {
-        this.states = states;
+    public void setState1s(List<State1> state1s) {
+        this.state1s = state1s;
     }
 }

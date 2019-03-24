@@ -20,9 +20,9 @@ public class Utils {
         return output.toString();
     }
 
-    public static String[] getCleanLines(String data, int startingLine) {//2,3,4
+    public static String[] getCleanLines(String data, int startingLine) {
         String[] rows = data.split("\n");
-        String[] result = new String[rows.length];
+        String[] result = new String[rows.length - startingLine];
         for (int i = startingLine; i < rows.length; i++) {
             rows[i] = removeUnnecessaryCommas(rows[i]);
             result[i - startingLine] = rows[i];

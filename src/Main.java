@@ -9,11 +9,14 @@ public class Main {
     public static void main(String[] args) {
 
 
-        String presidentialData = Utils.readFileAsString("data/2016_Presidential_Results.csv");
-        String educationData = Utils.readFileAsString("data/Education.csv");
-        String employmentData = Utils.readFileAsString("data/Unemployment.csv");
+        String presidentialData = Utils.readFileAsString("Data/2016_Presidential_Results.csv");
+        String educationData = Utils.readFileAsString("Data/Education.csv");
+        String employmentData = Utils.readFileAsString("Data/Unemployment.csv");
+        String voterData = Utils.readFileAsString("Data/RegisteredVoters.csv");
+        String householdIncome = Utils.readFileAsString("Data/MedianHouseholdIncome.csv");
+
 
         DataManager dataManager = new DataManager();
-        dataManager.loadAllData(presidentialData, educationData, employmentData);
+        dataManager.loadAllData(householdIncome, voterData);
     }
 }
